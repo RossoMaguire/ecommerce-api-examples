@@ -1,0 +1,28 @@
+{
+  "name": "ecommerce-api-examples",
+  "version": "1.0.0",
+  "description": "Examples of products being rendered by WP and Ecommerce platforms",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "build": "cd client && npm run build",
+    "heroku-prebuild": "cd client && npm install --dev",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Ross Maguire",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.20.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.1",
+    "express": "^4.18.1",
+    "node-bigcommerce": "^4.1.0",
+    "swell-node": "^4.0.10"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.19"
+  },
+  "engines": {
+    "node": "16.14.0"
+  }
+}

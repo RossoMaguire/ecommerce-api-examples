@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Ecommerce APIs</title>
+    <link
+      rel="icon"
+      href="https://cdn.icon-icons.com/icons2/1369/PNG/512/-shopping-cart_90604.png"
+    />
+    <link rel="stylesheet" href="./css/custom.css" type="text/css" />
+  </head>
+
+  <body>
+    <div class="container mx-auto mt-14 max-w-4xl">
+      <!-- WP & Commerce Layer Example-->
+      <div class="mb-12">
+        <b>WordPress & Commerce Layer Example</b>
+        <div class="mt-4">
+          <p>
+            This example loads a product with the image, title and description
+            from WordPress and the price and availability from Commerce Layer
+            REST API. It makes 3 separate API calls unified with
+            <a
+              href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/all"
+              target="_blank"
+              style="color: blue"
+              >Promise.all()
+            </a>
+            - 1 for the WordPress data and 2 for Commerce Layer data.
+          </p>
+        </div>
+        <div class="product-area mb-14">
+          <div
+            id="wp-clayer-product"
+            class="max-w-sm w-full lg:max-w-full p-8 border-gray-400 border-r border-b border-l border-gray-400 lg:border-l lg:border-t lg:border-gray-400"
+          >
+            <div
+              id="wp-clayer-image"
+              class="h-48 lg:h-auto lg:w-48 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden"
+              title="WP Engine Mug"
+            ></div>
+            <div
+              class="bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal"
+            >
+              <div class="mb-8">
+                <div
+                  id="wp-clayer-title"
+                  class="text-gray-900 font-bold text-xl mb-2"
+                ></div>
+                <p
+                  id="wp-clayer-description"
+                  class="text-gray-700 text-base"
+                ></p>
+              </div>
+              <div class="flex items-center">
+                <div
+                  id="wp-clayer-stock-circle"
+                  class="rounded-full mr-2"
+                ></div>
+                <div class="text-sm">
+                  <p
+                    id="wp-clayer-price"
+                    class="text-gray-900 leading-none"
+                  ></p>
+                  <p id="wp-clayer-availability" class="text-gray-600"></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="mt-4 mb-6">
+          <form id="wp-clayer-auth">
+            <label
+              class="block text-gray-700 text-sm font-bold mb-2"
+              for="wp-clayer-password"
+            >
+              Please enter the password provided for this request
+            </label>
+            <input
+              id="wp-clayer-password-field"
+              class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              type="text"
+              placeholder="Password"
+              name="wp-clayer-password"
+            />
+          </form>
+          <button
+            id="wp-clayer-password-button"
+            class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4"
+          >
+            Load Product
+          </button>
+        </div>
+        <hr />
+      </div>
+
+      <!-- WP & Big Commerce Example-->
+      <div class="mb-12">
+        <b>WordPress & Big Commerce Example</b>
+        <div class="mt-4">
+          <p>
+            This example loads a product with the image, title and description
+            from WordPress and the price and availability from Big Commerce. It
+            makes 3 separate API calls unified with
+            <a
+              href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/all"
+              target="_blank"
+              style="color: blue"
+              >Promise.all()
+            </a>
+            - 1 for the WordPress data and 1 for Big Commerce data.
+          </p>
+        </div>
+        <div class="product-area mb-14 mt-14">
+          <div
+            id="wp-bigcommerce-product"
+            class="max-w-sm w-full lg:max-w-full p-8 border-gray-400 border-r border-b border-l border-gray-400 lg:border-l lg:border-t lg:border-gray-400"
+          >
+            <div
+              id="wp-bigcommerce-image"
+              class="h-48 lg:h-auto lg:w-48 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden"
+              title="Combat Corner Gloves"
+            ></div>
+            <div
+              class="bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal"
+            >
+              <div class="mb-8">
+                <div
+                  id="wp-bigcommerce-title"
+                  class="text-gray-900 font-bold text-xl mb-2"
+                ></div>
+                <p
+                  id="wp-bigcommerce-description"
+                  class="text-gray-700 text-base"
+                ></p>
+              </div>
+              <div class="flex items-center">
+                <div
+                  id="wp-bigcommerce-stock-circle"
+                  class="rounded-full mr-2"
+                ></div>
+                <div class="text-sm">
+                  <p
+                    id="wp-bigcommerce-price"
+                    class="text-gray-900 leading-none"
+                  ></p>
+                  <p id="wp-bigcommerce-availability" class="text-gray-600"></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="mt-4 mb-6">
+          <button
+            id="wp-bigcommerce-password-button"
+            class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4"
+          >
+            Load Product
+          </button>
+        </div>
+        <hr />
+      </div>
+
+      <!-- WP & Swell Example-->
+      <div class="mb-12">
+        <b>WordPress & Swell Example</b>
+        <div class="mt-4">
+          <p>
+            This example loads a product with the image, title and description
+            from WordPress and the price and availability from Swell. It makes 3
+            separate API calls unified with
+            <a
+              href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/all"
+              target="_blank"
+              style="color: blue"
+              >Promise.all()
+            </a>
+            - 1 for the WordPress data and 1 for Swell Data.
+          </p>
+        </div>
+        <div class="product-area mb-14 mt-14">
+          <div
+            id="wp-swell-product"
+            class="max-w-sm w-full lg:max-w-full p-8 border-gray-400 border-r border-b border-l border-gray-400 lg:border-l lg:border-t lg:border-gray-400"
+          >
+            <div
+              id="wp-swell-image"
+              class="h-48 lg:h-auto lg:w-48 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden"
+              title="WP Engine Mug"
+            ></div>
+            <div
+              class="bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal"
+            >
+              <div class="mb-8">
+                <div
+                  id="wp-swell-title"
+                  class="text-gray-900 font-bold text-xl mb-2"
+                ></div>
+                <p
+                  id="wp-swell-description"
+                  class="text-gray-700 text-base"
+                ></p>
+              </div>
+              <div class="flex items-center">
+                <div id="wp-swell-stock-circle" class="rounded-full mr-2"></div>
+                <div class="text-sm">
+                  <p id="wp-swell-price" class="text-gray-900 leading-none"></p>
+                  <p id="wp-swell-availability" class="text-gray-600"></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="mt-4 mb-6">
+          <button
+            id="wp-swell-password-button"
+            class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4"
+          >
+            Load Product
+          </button>
+        </div>
+        <hr />
+      </div>
+      <div class="footer mt-6 float-right">
+        Browse this code on<a
+          href="https://github.com/RossoMaguire/ecommerce-api-examples"
+          ><img
+            style="height: 30px"
+            src="https://github.githubassets.com/images/modules/logos_page/GitHub-Logo.png"
+        /></a>
+      </div>
+    </div>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Comment this in during development so that changes to JS when webpack dev server is running are reflected -->
+    <!-- <script src="./dist/ecommerce.min.js" type="text/javascript"></script> -->
+    <!-- It is redundant in production -->
+  </body>
+</html>

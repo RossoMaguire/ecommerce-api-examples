@@ -1,0 +1,17 @@
+#wp-bigcommerce-product,
+#wp-clayer-product,
+#wp-swell-product {
+  display: none;
+}
+
+.available {
+  width: 30px;
+  height: 30px;
+  background-color: green;
+}
+
+.out-of-stock {
+  width: 30px;
+  height: 30px;
+  background-color: red;
+}
