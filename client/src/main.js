@@ -4,6 +4,7 @@ import {
   callWpAndCommerceLayerAPIs,
   callWpAndBigCommerceAPIs,
   callWpAndSwellAPIs,
+  callWpAndCommerceJsAPIs,
 } from './api/unifiers/client';
 import { getClientIdCookie } from './utils';
 import apiConfig from '../config/apiConfig';
@@ -262,7 +263,7 @@ document.addEventListener(
 
       // get the Swell price
       const swellPrice = swellData[1].results[0].price;
-      document.getElementById('wp-bigcommerce-price').textContent = swellPrice;
+      document.getElementById('wp-swell-price').textContent = swellPrice;
 
       // get the Swell stock
       const swellStock = swellData[1].results[0].stock_status;
@@ -277,6 +278,89 @@ document.addEventListener(
           .getElementById('wp-swell-stock-circle')
           .classList.add('available');
         document.getElementById('wp-swell-availability').textContent =
+          'Available';
+      }
+    }
+  },
+  false
+);
+///////////////////////////////////////
+
+// WP & Commerce JS Example
+// The load product button
+document.addEventListener(
+  'click',
+  async function (event) {
+    // If the clicked element doesn't have the right selector, bail
+    if (!event.target.matches('#wp-commercejs-password-button')) return;
+
+    // Toggle the button visibility
+    if (
+      document.getElementById('wp-commercejs-product').style.display === 'flex'
+    ) {
+      //change the button text
+      document.getElementById('wp-commercejs-password-button').textContent =
+        'Load Product';
+      //hide the product box
+      document.getElementById('wp-commercejs-product').style.display = 'none';
+      // remove the data
+      document.getElementById('wp-commercejs-image').style.backgroundImage = '';
+      document.getElementById('wp-commercejs-description').innerHTML = '';
+      document
+        .getElementById('wp-commercejs-stock-circle')
+        .classList.contains('available')
+        ? document
+            .getElementById('wp-commercejs-stock-circle')
+            .classList.remove('available')
+        : document
+            .getElementById('wp-commercejs-stock-circle')
+            .classList.remove('out-of-stock');
+      document
+        .querySelectorAll(
+          '#wp-commercejs-title, #wp-commercejs-price, #wp-commercejs-availability'
+        )
+        .forEach((div) => {
+          div.textContent = '';
+        });
+    } else {
+      // call the APIs
+      const commerceJsData = await callWpAndCommerceJsAPIs();
+      console.log(commerceJsData);
+
+      // change the button text
+      document.getElementById('wp-commercejs-password-button').textContent =
+        'Hide Product';
+      // show the product box
+      document.getElementById('wp-commercejs-product').style.display = 'flex';
+
+      // get the WP content
+      const commerceJsWpContent = commerceJsData[0];
+      document.getElementById(
+        'wp-commercejs-image'
+      ).style.backgroundImage = `url('${commerceJsWpContent[1].acm_fields.image}')`;
+      document.getElementById('wp-commercejs-title').textContent =
+        commerceJsWpContent[1].acm_fields.name;
+      document.getElementById('wp-commercejs-description').innerHTML =
+        commerceJsWpContent[1].acm_fields.description;
+
+      // get the Swell price
+      const commerceJsPrice = commerceJsData[1][0].price.formatted_with_symbol;
+      document.getElementById('wp-commercejs-price').textContent =
+        commerceJsPrice;
+
+      // get the Swell stock
+      const commerceJsStock = commerceJsData[1][0].inventory.available;
+      if (commerceJsStock === 0) {
+        document
+          .getElementById('wp-commercejs-stock-circle')
+          .classList.add('out-of-stock');
+        document.getElementById('wp-commercejs-availability').textContent =
+          'Out of stock';
+      } else {
+        document
+          .getElementById('wp-commercejs-stock-circle')
+          .classList.add('available');
+        document.getElementById('wp-commercejs-availability').textContent =
           'Available';
       }
     }

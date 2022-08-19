@@ -47,6 +47,9 @@ module.exports = {
     new CopyWebpackPlugin({
       patterns: [{ from: './css', to: './css', toType: 'dir' }],
     }),
-    new webpack.EnvironmentPlugin(['BACKEND_API_BASE_URL']),
+    new webpack.EnvironmentPlugin([
+      'BACKEND_API_BASE_URL',
+      'COMMERCE_JS_PUBLIC_KEY',
+    ]),
   ],
 };

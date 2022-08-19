@@ -5,6 +5,7 @@ import {
 } from '../../commerceLayer/api';
 import { getBigCommerceData } from '../../bigCommerce/api';
 import { getSwellData } from '../../swell/api';
+import { getCommerceJsData } from '../../commerceJs/api';
 
 /**
  * Calls all the endpoints for the WordPress & Commerce Layer Example
@@ -38,6 +39,16 @@ export function callWpAndBigCommerceAPIs() {
  */
 export function callWpAndSwellAPIs() {
   return Promise.all([getWordPressData(), getSwellData()]).then((data) => {
+    return data;
+  });
+}
+
+/**
+ * Calls all the endpoints for the WordPress & Commerce JS Example
+ * Returns an array of data responses from each API
+ */
+export function callWpAndCommerceJsAPIs() {
+  return Promise.all([getWordPressData(), getCommerceJsData()]).then((data) => {
     return data;
   });
 }

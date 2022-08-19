@@ -1,6 +1,7 @@
 #wp-bigcommerce-product,
 #wp-clayer-product,
-#wp-swell-product {
+#wp-swell-product,
+#wp-commercejs-product {
   display: none;
 }
 

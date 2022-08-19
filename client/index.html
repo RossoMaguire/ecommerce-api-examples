@@ -102,7 +102,7 @@
           <p>
             This example loads a product with the image, title and description
             from WordPress and the price and availability from Big Commerce. It
-            makes 3 separate API calls unified with
+            makes 2 separate API calls unified with
             <a
               href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/all"
               target="_blank"
@@ -168,7 +168,7 @@
         <div class="mt-4">
           <p>
             This example loads a product with the image, title and description
-            from WordPress and the price and availability from Swell. It makes 3
+            from WordPress and the price and availability from Swell. It makes 2
             separate API calls unified with
             <a
               href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/all"
@@ -222,9 +222,77 @@
         </div>
         <hr />
       </div>
+
+      <!-- WP & Commerce JS Example-->
+      <div class="mb-12">
+        <b>WordPress & Commerce JS Example</b>
+        <div class="mt-4">
+          <p>
+            This example loads a product with the image, title and description
+            from WordPress and the price and availability from Commerce JS. It
+            makes 2 separate API calls unified with
+            <a
+              href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/all"
+              target="_blank"
+              style="color: blue"
+              >Promise.all()
+            </a>
+            - 1 for the WordPress data and 1 for Commerce JS Data.
+          </p>
+        </div>
+        <div class="product-area mb-14 mt-14">
+          <div
+            id="wp-commercejs-product"
+            class="max-w-sm w-full lg:max-w-full p-8 border-gray-400 border-r border-b border-l border-gray-400 lg:border-l lg:border-t lg:border-gray-400"
+          >
+            <div
+              id="wp-commercejs-image"
+              class="h-48 lg:h-auto lg:w-48 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden"
+              title="WP Engine Mug"
+            ></div>
+            <div
+              class="bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal"
+            >
+              <div class="mb-8">
+                <div
+                  id="wp-commercejs-title"
+                  class="text-gray-900 font-bold text-xl mb-2"
+                ></div>
+                <p
+                  id="wp-commercejs-description"
+                  class="text-gray-700 text-base"
+                ></p>
+              </div>
+              <div class="flex items-center">
+                <div
+                  id="wp-commercejs-stock-circle"
+                  class="rounded-full mr-2"
+                ></div>
+                <div class="text-sm">
+                  <p
+                    id="wp-commercejs-price"
+                    class="text-gray-900 leading-none"
+                  ></p>
+                  <p id="wp-commercejs-availability" class="text-gray-600"></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="mt-4 mb-6">
+          <button
+            id="wp-commercejs-password-button"
+            class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4"
+          >
+            Load Product
+          </button>
+        </div>
+        <hr />
+      </div>
       <div class="footer mt-6 float-right">
         Browse this code on<a
           href="https://github.com/RossoMaguire/ecommerce-api-examples"
+          target="_blank"
           ><img
             style="height: 30px"
             src="https://github.githubassets.com/images/modules/logos_page/GitHub-Logo.png"

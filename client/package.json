@@ -11,6 +11,7 @@
     "eslint": "./node_modules/.bin/eslint --init"
   },
   "dependencies": {
+    "@chec/commerce.js": "^2.8.0",
     "@commercelayer/js-auth": "^2.0.2",
     "@commercelayer/js-sdk": "^2.14.3",
     "autoprefixer": "^10.4.7",
