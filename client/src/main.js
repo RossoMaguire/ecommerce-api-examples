@@ -87,7 +87,9 @@ document.addEventListener(
       document.getElementById('wp-clayer-product').style.display = 'flex';
 
       // call the APIs
+      document.getElementById('wp-clayer-loader').style.display = 'block';
       const clayerData = await callWpAndCommerceLayerAPIs();
+      document.getElementById('wp-clayer-loader').style.display = 'none';
 
       // get the WP content
       const clayerWpContent = clayerData[0];
@@ -163,7 +165,9 @@ document.addEventListener(
         });
     } else {
       // call the APIs
+      document.getElementById('wp-bigcommerce-loader').style.display = 'block';
       const bigcommerceData = await callWpAndBigCommerceAPIs();
+      document.getElementById('wp-bigcommerce-loader').style.display = 'none';
 
       // change the button text
       document.getElementById('wp-bigcommerce-password-button').textContent =
@@ -243,7 +247,9 @@ document.addEventListener(
         });
     } else {
       // call the APIs
+      document.getElementById('wp-swell-loader').style.display = 'block';
       const swellData = await callWpAndSwellAPIs();
+      document.getElementById('wp-swell-loader').style.display = 'none';
 
       // change the button text
       document.getElementById('wp-swell-password-button').textContent =
@@ -261,24 +267,31 @@ document.addEventListener(
       document.getElementById('wp-swell-description').innerHTML =
         swellWpContent[1].acm_fields.description;
 
-      // get the Swell price
-      const swellPrice = swellData[1].results[0].price;
-      document.getElementById('wp-swell-price').textContent = swellPrice;
-
-      // get the Swell stock
-      const swellStock = swellData[1].results[0].stock_status;
-      if (swellStock === 'out_of_stock') {
-        document
-          .getElementById('wp-swell-stock-circle')
-          .classList.add('out-of-stock');
+      if (JSON.stringify(swellData[1]).message !== null) {
         document.getElementById('wp-swell-availability').textContent =
-          'Out of stock';
+          swellData[1].message;
+        document.getElementById('wp-swell-price').textContent =
+          swellData[1].message;
       } else {
-        document
-          .getElementById('wp-swell-stock-circle')
-          .classList.add('available');
-        document.getElementById('wp-swell-availability').textContent =
-          'Available';
+        // get the Swell price
+        const swellPrice = swellData[1].results[0].price;
+        document.getElementById('wp-swell-price').textContent = swellPrice;
+
+        // get the Swell stock
+        const swellStock = swellData[1].results[0].stock_status;
+        if (swellStock === 'out_of_stock') {
+          document
+            .getElementById('wp-swell-stock-circle')
+            .classList.add('out-of-stock');
+          document.getElementById('wp-swell-availability').textContent =
+            'Out of stock';
+        } else {
+          document
+            .getElementById('wp-swell-stock-circle')
+            .classList.add('available');
+          document.getElementById('wp-swell-availability').textContent =
+            'Available';
+        }
       }
     }
   },
@@ -324,8 +337,9 @@ document.addEventListener(
         });
     } else {
       // call the APIs
+      document.getElementById('wp-commercejs-loader').style.display = 'block';
       const commerceJsData = await callWpAndCommerceJsAPIs();
-      console.log(commerceJsData);
+      document.getElementById('wp-commercejs-loader').style.display = 'none';
 
       // change the button text
       document.getElementById('wp-commercejs-password-button').textContent =

@@ -29,3 +29,7 @@ To Develop the server run:
 When working in Node, to build the latest frontend that will be served by the express server run from root:
 
 `npm run build`
+
+To run the server
+
+`npx nodemon index.js`

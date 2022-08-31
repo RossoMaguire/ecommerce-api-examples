@@ -61,7 +61,8 @@ app.get('/api/swell', (req, res) => {
       res.send(data);
     })
     .catch((err) => {
-      res.send(data);
+      const message = { message: 'Trial Expired' };
+      res.send(message);
     });
 });
 
