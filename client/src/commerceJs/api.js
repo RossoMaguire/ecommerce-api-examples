@@ -11,7 +11,6 @@ export async function getCommerceJsData() {
   return commerceJs.products
     .list()
     .then((products) => {
-      console.log(products.data);
       return products.data;
     })
     .catch((error) => {

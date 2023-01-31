@@ -339,6 +339,7 @@ document.addEventListener(
       // call the APIs
       document.getElementById('wp-commercejs-loader').style.display = 'block';
       const commerceJsData = await callWpAndCommerceJsAPIs();
+      console.log(commerceJsData);
       document.getElementById('wp-commercejs-loader').style.display = 'none';
 
       // change the button text
