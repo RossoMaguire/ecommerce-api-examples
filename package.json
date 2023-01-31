@@ -6,7 +6,6 @@
   "scripts": {
     "start": "node index.js",
     "build": "cd client && npm run build",
-    "heroku-prebuild": "cd client && npm install --dev",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Ross Maguire",
@@ -21,8 +20,5 @@
   },
   "devDependencies": {
     "nodemon": "^2.0.19"
-  },
-  "engines": {
-    "node": "16.14.0"
   }
 }
