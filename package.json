@@ -1,7 +1,7 @@
 {
   "name": "ecommerce-api-examples",
   "version": "1.0.0",
-  "description": "Examples of products being rendered by WP and Ecommerce platforms",
+  "description": "Examples of products being rendered by WP and various eCommerce platforms",
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
